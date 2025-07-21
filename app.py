@@ -7,7 +7,7 @@ import os
 app = Flask(__name__)
 
 # MongoDB connection
-client = MongoClient("mongodb://localhost:27017/")
+client = MongoClient("mongodb+srv://gowthamjuttiga:gowtham@123@cluster0.nkoo2nz.mongodb.net/")
 db = client["readtrack_db"]
 collection = db["content"]
 
