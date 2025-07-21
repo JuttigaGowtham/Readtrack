@@ -53,5 +53,7 @@ def dashboard():
     contents = list(collection.find())
     return render_template("dashboard.html", contents=contents)
 
+# Entry point for Render (bind to 0.0.0.0 and use Render's port)
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port, debug=True)
