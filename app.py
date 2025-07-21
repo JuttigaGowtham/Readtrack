@@ -3,11 +3,19 @@ import json
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 app = Flask(__name__)
 
 # MongoDB connection
-client = MongoClient("mongodb+srv://gowthamjuttiga:gowtham@123@cluster0.nkoo2nz.mongodb.net/")
+mongo_uri = os.getenv("MONGO_URI")
+if not mongo_uri:
+    raise Exception("MONGO_URI not found in environment variables")
+
+client = MongoClient(mongo_uri)
 db = client["readtrack_db"]
 collection = db["content"]
 
